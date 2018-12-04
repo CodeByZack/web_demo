@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>布局练习</title>
+    <style>
+    body{
+        text-align: center;
+    }
+    .box1{
+        background-color: grey;
+        margin: 20px auto;
+        width: 80%;
+        text-align: center;
+        padding: 10px;
+        position: relative;
+        height: 383px;
+    }
+    .flex{
+        display: flex;
+        justify-content: center;
+    }
+    .flex2{
+        display: flex;
+        align-items: center;
+    }
+    .flex3{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .cell{
+        display: table-cell;
+        vertical-align: middle;
+        height: 383px;
+    }
+    .cell2{
+        vertical-align: middle;
+        display: table-cell;
+        text-align: center;
+    }
+    .box1 .box2{
+        width: 50%;
+        height: 300px;
+        background-color: darkturquoise;
+
+    }
+    .box1 .box3{
+        width: 300px;
+        height: 100px;
+        background-color: darkturquoise;
+
+    }
+    .box1 .center{
+        display: inline-block;
+    }
+    .box1 .m{
+        margin: 0 auto;
+    }
+    .box1 .at{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .box1 .atm{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .box1 .ab3{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .inline-wrap {
+        display: inline-block;
+        max-width: 100%;
+    }
+    .block-wrap {
+        width: 100%;
+    }
+    .block {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding-left: 20px;
+    }
+    .icon {
+        position: absolute;
+        width: 20px;
+        right: 0;
+    }
+    </style>
+</head>
+<body>
+        <div class='inline-wrap'>
+                <div class='block-wrap'>
+                    <div class='block'>
+                        Text 1 Text 2 Text 3 Text 4 Text 5
+                        <div class='icon'>12</div>
+                    </div>
+                </div>
+            </div>
+    <h2>居中解决方案</h2>
+    <div class="box1">
+        <h3>inline-block + text-align(水平居中)</h3>
+        <div class="center box2">
+            <p>CENTER</p>
+            <p>可以让 inline/inline-block/inline-table/inline/flex 等类型的元素实现居中。</p>
+        </div>
+    </div>
+    <div class="box1">
+        <h3>margin:0 auto;(水平居中)</h3>
+        <div class="m  box2">CENTER</div>
+    </div>
+    <div class="box1">
+        <h3>absolute + transform;(水平居中)</h3>
+        <div class="at  box2">
+           <p>CENTER</p> 
+           <p>脱离文档流</p> 
+           <p>需设置父容器高度</p> 
+        </div>
+    </div>
+    <div class="box1">
+        <h3>flex + justify-content;(水平居中)</h3>
+        <div class="flex">
+            <div class="box2">
+                <p>CENTER</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="box1">
+        <div class="cell">
+            <div class="box3">
+                <h3>table-cell + vertical-align;(垂直居中)</h3>
+            </div>
+        </div>
+    </div>
+    <div class="box1">
+        <div class="box3 atm">
+            <h3>absolute + transform;(垂直居中)</h3>
+        </div>
+    </div>
+    <div class="box1">
+        <div class="flex2">
+            <div class="box3 atm">
+                <h3>flex + align-items;(垂直居中)</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="box1">
+            <div class="box3 ab3">
+                <h3>absolute + transform;(水平垂直居中)</h3>
+            </div>
+    </div>
+
+    <div class="box1 flex3">
+            <div class="box3">
+                <h3>flex + justify-content + align-items;(水平垂直居中)</h3>
+            </div>
+    </div>
+</body>
+</html>

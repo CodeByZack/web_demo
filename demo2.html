@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>跟随鼠标粒子散开效果</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    
+    
+    <script>
+
+        let canvas = document.getElementById('canvas');
+        //画布占满整个屏幕
+        let canvas_width = canvas.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+			canvas_height = canvas.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        canvas.style = "position: fixed; top: 0px; left: 0px;";
+        //获得 2d 上下文对象
+        let ctx = canvas.getContext('2d');
+
+        //构造函数
+        function Circle(config){
+            this.x = config.x;//x坐标
+            this.y = config.y;//y坐标
+            this.r = 20;//半径
+
+            //确定小球运动的方向
+            this.deg = Math.random()*2*Math.PI;//角度
+            //确定小球运动的速度
+            this.speed = Math.random()*20 - 10;
+            //将角度分解为x，y方向的速度
+            this.sx = this.speed * Math.sin(this.deg);//x方向速度
+            this.sy = this.speed * Math.cos(this.deg);//y方向速度
+        
+            this.color = config.color || "rgb(255,255,255)";
+
+            this.isOutSide = false;
+        }
+        //小球方法
+        Circle.prototype.drawSelf = function(ctx){
+            this.x += this.sx;
+            this.y += this.sy;
+            
+            this.deg = this.deg +0.1;
+            if(this.deg>Math.PI*2) this.deg = this.deg -Math.PI*2;
+
+            this.r = this.r - Math.random()*3;
+
+            if(this.r>0){
+                ctx.beginPath();
+                ctx.fillStyle = this.color;
+                ctx.arc(this.x,this.y,this.r,0,Math.PI*2,false);
+                ctx.fill();
+            }else{
+                this.isOutSide = true;
+            }
+        }
+
+        function Ball(x,y){
+            this.arrs = [];
+            this.create(x,y);
+            this.isOutSide = false;
+        }
+        Ball.prototype.create = function(x,y){
+            for(let i= 0; i<10;i++){
+                let config = {};
+                var R = parseInt(Math.random()*256);//颜色的随机数
+                var G = parseInt(Math.random()*256);//颜色的随机数
+                var B = parseInt(Math.random()*256);//颜色的随机数
+                config.color = "rgb("+R+","+G+","+B+")";//粒子颜色
+                config.y = y;
+                config.x = x;
+                this.arrs.push(new Circle(config));
+            }            
+        }
+        Ball.prototype.drawSelf = function(ctx){
+            this.isOutSide = true;
+            for(let i = 0; i<this.arrs.length; i++){
+                if(this.arrs[i].isOutSide){
+                    this.arrs.splice(i, 1);
+                }else{
+                    this.arrs[i].drawSelf(ctx);
+                    this.isOutSide = false;
+                }
+            }
+        }
+
+        let Balls = [];
+        Balls.push(new Ball(100,300));
+        function draw(){
+            ctx.clearRect(0, 0, canvas_width, canvas_height);
+            for(let i = 0; i<Balls.length; i++){
+                if(!Balls[i].isOutSide){
+                    Balls[i].drawSelf(ctx);
+                }else{
+                    Balls.splice(i,1);
+                }
+            }
+            setTimeout(draw,20);
+            // requestAnimationFrame(draw);
+        }
+        draw();
+
+        window.onmousemove = e => {
+            e = e || window.event;
+            // Balls.pop();
+            Balls.push(new Ball(e.clientX,e.clientY));
+        };
+        // window.onmouseout = () => {
+        //     current_point.x = null;
+        //     current_point.y = null;
+        // };
+    </script>  
+</body>
+</html>
