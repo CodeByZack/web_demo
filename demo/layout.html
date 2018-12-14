@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body,p{margin: 0;}
+        .parent{
+            overflow: hidden;
+            margin-bottom: 100px;
+        }
+        .parent > .left,.parent > .centerWrap,.parent > .right{
+            float: left;
+            width: 50%;
+            padding-bottom: 9999px;
+            margin-bottom: -9999px;
+        }
+        .parent > .left,.parent > .right{
+            width: 25%;
+        }
+
+        .parent2{
+            display: flex;
+        }
+        .parent2 > .left,.parent2 > .center,.parent2 > .right{
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <h2>css 等高布局</h2>
+
+    <div class="parent" style="background-color: lightgrey;">
+        <div class="left" style="background-color: lightblue;">
+            <p>left</p>
+        </div>  
+        <div class="centerWrap">
+                <p>center</p>
+                <p>center</p>
+        </div>
+                
+        <div class="right" style="background-color: lightgreen;">
+            <p>right</p>
+        </div>        
+    </div>
+
+    <div class="parent2" style="background-color: lightgrey;">
+        <div class="left" style="background-color: lightblue;">
+            <p>left</p>
+        </div>  
+        <div class="center" style="background-color: pink;">
+            <p>center</p>
+            <p>center</p>
+        </div>          
+        <div class="right" style="background-color: lightgreen;">
+            <p>right</p>
+        </div>        
+    </div>
+
+</body>
+</html>
