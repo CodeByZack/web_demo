@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="../js/烟花.js"></script>
+    <!-- <script src="../js/烟花.js"></script> -->
+    <script src="../js/firework.js"></script>
     <title>烟花效果演示</title>
     <style>
         #canvas{
@@ -20,7 +21,7 @@
         let canvas = document.getElementById('canvas');
         canvas.width = canvas.clientWidth;
         canvas.height = canvas.clientHeight;
-        firework.start(document.getElementById("canvas"),50)
+        firework.start(canvas);
     </script>
 </body>
 </html>
