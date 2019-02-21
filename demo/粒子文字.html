@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>粒子文字</title>
+    <style>
+        #canvas{
+            width: 100%;
+            height: 400px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">
+
+    </canvas>
+    
+    <script src="../js/粒子文字.js"></script>
+    <script>
+        let canvas = document.getElementById("canvas");
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+        EText.init(canvas);
+
+        let i = 10;
+
+        function count(){
+            EText.showMsg(i);
+            i--
+            if(i > 0){
+                setTimeout(count,1000);
+            }else{
+                EText.showMsg("HAPPY!");
+            }   
+        }
+        count();
+    </script>
+</body>
+</html>
