@@ -79,5 +79,6 @@ function complieLess(srcPath){
 }
 
 
-
-console.log(readAllFile(lessPath));
+module.exports = {
+    build : readAllFile
+}

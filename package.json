@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lessc": "./node_modules/less/bin/lessc ./less/index2.less ./css/index2.css"
+    "lessc": "node ./build/lessc.js"
   },
   "repository": {
     "type": "git",
