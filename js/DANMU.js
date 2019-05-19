@@ -18,7 +18,12 @@
     }
     let messages = [];
     let width,height,context;
-    let someText = ["66666666666","求大佬带飞！！！","我忽然觉得自己正被隔离开来，远离自己认识的人，远离自己熟悉的场所，远得无法置信。","人生若只如初见，何事秋风悲画扇。","山无陵，江水为竭。冬雷震震，夏雨雪。天地合，乃敢与君绝。"];
+    let someText = [
+        "Vue","React","Redux",
+        "Vuex","Vue-Router","React-Router",
+        "JavaScript","ES6",
+        "HTML5","CSS3","Axios"
+    ];
     
     function Message(msg,pos){
         this.pos = {
@@ -85,7 +90,6 @@
         if(messages.length < 10){
             DANMU.addMsg(someText[getRandom(0,someText.length)]);
         }
-        window.requestAnimationFrame(LOOP);
     }
 
     let DANMU = {};
@@ -107,19 +111,17 @@
         
     }
 
-    DANMU.start = function(canvas){
-        width = canvas.width;
-        height = canvas.height;
+    DANMU.start = function(container){
+        width = container.clientWidth;
+        height = container.clientHeight;
+        let canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        container.appendChild(canvas);
         context = canvas.getContext("2d");
-
-
-
-        window.requestAnimationFrame(LOOP);
     }
 
-    DANMU.stop = function(){
-
-    }
+    DANMU.update = LOOP
 
     window.DANMU = DANMU;
 })();

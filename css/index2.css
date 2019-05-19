@@ -53,6 +53,9 @@
   text-decoration: none;
   animation: wave 2s linear infinite;
 }
+.skill_tags {
+  height: 80px;
+}
 @keyframes wave {
   from {
     background-position-x: 0%;
