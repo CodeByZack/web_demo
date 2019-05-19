@@ -22,7 +22,6 @@ function init(){
     ageDom.innerText = `年龄：${ obj.old }岁`;
     workDom.innerText = `工作天数：${ obj.yearsOfWorking } 天`;
 
-    DANMU.start(document.querySelector(".skill_tags"));
 }
 
 
@@ -34,7 +33,6 @@ function init(){
 function animate(time) {
 	requestAnimationFrame(animate);
     TWEEN.update(time);
-    DANMU.update();
 }
 
 init();
