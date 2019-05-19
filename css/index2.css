@@ -3,13 +3,14 @@
   background-image: radial-gradient(white, rgba(255, 255, 255, 0.2) 2px, transparent 40px), radial-gradient(white, rgba(255, 255, 255, 0.15) 1px, transparent 30px), radial-gradient(white, rgba(255, 255, 255, 0.1) 2px, transparent 40px), radial-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1) 2px, transparent 30px);
   background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
   background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
-  padding: 20px;
+  padding: 60px 0;
   text-align: center;
 }
 .top_bg .avatar img {
   width: 70px;
   height: 70px;
   border-radius: 50%;
+  box-shadow: #fbfbfb6b -3px 3px 5px 1px;
   transition: all 0.5s ease-in-out;
 }
 .top_bg .avatar img:hover {
@@ -63,4 +64,9 @@
   to {
     background-position-x: 100%;
   }
+}
+.container {
+  min-width: 1000px;
+  width: 1000px;
+  margin: 0 auto;
 }

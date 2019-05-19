@@ -98,7 +98,7 @@
 
         let pos = {
             x : -90,
-            y : getRandom(10,height-10)
+            y : getRandom(30,height-30)
         }
 
         let m = new Message(msg,pos);
