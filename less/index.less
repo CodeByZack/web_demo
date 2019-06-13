@@ -54,8 +54,14 @@
     .desc{
         color: #fff;
         font-size: 18px;
-        line-height: 36px;
+        line-height: 18px;
         text-shadow: #333 1px 1px 9px;
+        width: 28em;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-bottom: 10px;
+        border-right: 1px solid;
+        animation: typing 14s steps(28), caret 0.5s steps(1) infinite;
     }
     .info{
         color: #fff;
@@ -112,4 +118,12 @@
     from {background-position-x: 0%;}
     to   {background-position-x: 100%;}
 }
+
+@keyframes typing { 
+    from { width: 0; } 
+    // 80% { width: 28em; }
+} 
+@keyframes caret { 
+    50% { border-color: transparent; } 
+} 
 

@@ -41,8 +41,14 @@
 .top_bg .desc {
   color: #fff;
   font-size: 18px;
-  line-height: 36px;
+  line-height: 18px;
   text-shadow: #333 1px 1px 9px;
+  width: 28em;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 10px;
+  border-right: 1px solid;
+  animation: typing 14s steps(28), caret 0.5s steps(1) infinite;
 }
 .top_bg .info {
   color: #fff;
@@ -93,5 +99,15 @@
   }
   to {
     background-position-x: 100%;
+  }
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+@keyframes caret {
+  50% {
+    border-color: transparent;
   }
 }
