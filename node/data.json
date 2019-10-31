@@ -1,0 +1,384 @@
+{
+	"XIAOMI": [
+		{
+			"name": "Redmi K20 Pro ",
+			"desc": "骁龙855处理器, 弹出式极界全面屏",
+			"price": "\n                        2299元\n                    起2599元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000151.html"
+		},
+		{
+			"name": "Redmi K20",
+			"desc": "弹出全面屏，4800万三摄 ",
+			"price": "1799元\n                起2099元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000150.html"
+		},
+		{
+			"name": "Redmi 7A",
+			"desc": "小巧大电量 持久流畅 ",
+			"price": "579元\n                起599元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000152.html"
+		},
+		{
+			"name": "小米9",
+			"desc": "全息幻彩机身，骁龙855 ",
+			"price": "2799元\n                起3299元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000134.html"
+		},
+		{
+			"name": "Redmi Note 7 Pro",
+			"desc": "索尼4800万超清拍照  ",
+			"price": "1399元\n                1599元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/9455.html"
+		},
+		{
+			"name": "Redmi Note 7",
+			"desc": "4800万拍照 长续航 ",
+			"price": "1099元\n                1399元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000131.html"
+		},
+		{
+			"name": "Redmi 7 ",
+			"desc": "4000mAh超长续航 ",
+			"price": "699元\n                起799元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000138.html"
+		},
+		{
+			"name": "小米9 SE",
+			"desc": "索尼4800万三摄，骁龙712 ",
+			"price": "1599元\n                起1999元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000135.html"
+		},
+		{
+			"name": "小米MIX 3",
+			"desc": "DxO百分拍照手机 ",
+			"price": "2599元\n                3599元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000123.html"
+		},
+		{
+			"name": "黑鲨游戏手机 2",
+			"desc": "骁龙855，立体触控 ",
+			"price": "2699元\n                起3499元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000139.html"
+		},
+		{
+			"name": "小米6X",
+			"desc": "前置2000万，后置2000万 ",
+			"price": "999元\n                起1799元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000091.html"
+		},
+		{
+			"name": "小米9",
+			"desc": "全息幻彩机身，骁龙855 ",
+			"price": "2799元\n                起3299元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000134.html"
+		},
+		{
+			"name": "小米9 SE",
+			"desc": "索尼4800万三摄，骁龙712 ",
+			"price": "1599元\n                起1999元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000135.html"
+		},
+		{
+			"name": "小米6X",
+			"desc": "前置2000万，后置2000万 ",
+			"price": "999元\n                起1799元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000091.html"
+		},
+		{
+			"name": "小米MIX 2S",
+			"desc": "四曲面陶瓷机身，骁龙845 ",
+			"price": "1799元\n                2999元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000085.html"
+		},
+		{
+			"name": "Redmi K20 Pro ",
+			"desc": "骁龙855， 弹出全面屏 ",
+			"price": "2299元\n                起2599元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000151.html"
+		},
+		{
+			"name": "Redmi K20",
+			"desc": "弹出全面屏，4800万三摄 ",
+			"price": "1799元\n                起2099元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000150.html"
+		},
+		{
+			"name": "Redmi 7A",
+			"desc": "小巧大电量 持久流畅 ",
+			"price": "579元\n                起599元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000152.html"
+		},
+		{
+			"name": "Redmi Note 7",
+			"desc": "4800万拍照 长续航 ",
+			"price": "1099元\n                1399元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000131.html"
+		},
+		{
+			"name": "Redmi Note 7",
+			"desc": "4800万拍照 长续航 ",
+			"price": "1099元\n                1399元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000131.html"
+		},
+		{
+			"name": "Redmi 7 ",
+			"desc": "4000mAh超长续航 ",
+			"price": "699元\n                起799元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000138.html"
+		},
+		{
+			"name": "小米平板4",
+			"desc": "大屏幕，长续航，追剧更尽兴",
+			"price": "\n                        1399元\n                    起",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000108.html"
+		},
+		{
+			"name": "小米MIX 3",
+			"desc": "DxO百分拍照手机 ",
+			"price": "2599元\n                3599元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000123.html"
+		},
+		{
+			"name": "小米MIX 2S",
+			"desc": "四曲面陶瓷机身，骁龙845 ",
+			"price": "1799元\n                2999元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000085.html"
+		},
+		{
+			"name": "黑鲨游戏手机 2",
+			"desc": "骁龙855，立体触控 ",
+			"price": "2699元\n                起3499元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000139.html"
+		},
+		{
+			"name": "黑鲨游戏手机 Helo",
+			"desc": "双液冷，更能打 ",
+			"price": "3199元\n                3499元",
+			"imgUrl": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+			"link": "//item.mi.com/product/10000122.html"
+		}
+	],
+	"NUBIYA": [
+		{
+			"name": "红魔3S 银色风暴 ",
+			"peizhi": "8GB+128GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5d6cd17e9bfee11.png",
+			"price": " ￥ 2999 ",
+			"link": "/product/960/1308"
+		},
+		{
+			"name": "红魔3S 玄铁黑 ",
+			"peizhi": "8GB+128GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5d6cd1333eb054.png",
+			"price": " ￥ 2999 ",
+			"link": "/product/960/1309"
+		},
+		{
+			"name": "红魔3S 红蓝竞技 ",
+			"peizhi": "12GB+256GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5d6cd15b64db772.png",
+			"price": " ￥ 3799 ",
+			"link": "/product/960/1310"
+		},
+		{
+			"name": "Z20 钻石黑 ",
+			"peizhi": "6GB+128GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5d48dd2463fc329.png",
+			"price": " ￥ 3199 ",
+			"link": "/product/871/1211"
+		},
+		{
+			"name": "Z20 钻石黑 ",
+			"peizhi": "8GB+128GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5d48dd2463fc329.png",
+			"price": " ￥ 3399 ",
+			"link": "/product/871/1212"
+		},
+		{
+			"name": "Z20 锦鲤红 ",
+			"peizhi": "8GB+128GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5d48dd242af353.png",
+			"price": " ￥ 3399 ",
+			"link": "/product/871/1213"
+		},
+		{
+			"name": "Z20 星空蓝 ",
+			"peizhi": "8GB+128GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5d48dd24cab9e65.png",
+			"price": " ￥ 3399 ",
+			"link": "/product/871/1214"
+		},
+		{
+			"name": "Z20 锦鲤红 ",
+			"peizhi": "8GB+512GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5d48dd242af353.png",
+			"price": " ￥ 3899 ",
+			"link": "/product/871/1215"
+		},
+		{
+			"name": "Z20 钻石黑 ",
+			"peizhi": "8GB+512GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5d48dd2463fc329.png",
+			"price": " ￥ 3899 ",
+			"link": "/product/871/1216"
+		},
+		{
+			"name": "红魔3 玄铁黑 ",
+			"peizhi": "6GB+128GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5cc5098616ecf44.png",
+			"price": " ￥ 2499 ",
+			"link": "/product/840/1175"
+		},
+		{
+			"name": "红魔3 玄铁黑 ",
+			"peizhi": "8GB+128GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5cc5098616ecf44.png",
+			"price": " ￥ 2699 ",
+			"link": "/product/840/1176"
+		},
+		{
+			"name": "红魔3 赤焰红 ",
+			"peizhi": "8GB+128GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5cc509862275d5.png",
+			"price": " ￥ 2699 ",
+			"link": "/product/840/1177"
+		},
+		{
+			"name": "红魔3 战地迷彩版 ",
+			"peizhi": "12GB+256GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5cd3d55db448213.png",
+			"price": " ￥ 3499 ",
+			"link": "/product/840/1187"
+		},
+		{
+			"name": "努比亚阿尔法 伯爵黑（联通版） ",
+			"peizhi": "1G+8G  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5caab828be8847.png",
+			"price": " ￥ 2999 ",
+			"link": "/product/829/1159"
+		},
+		{
+			"name": "努比亚阿尔法 流光金（联通版） ",
+			"peizhi": "流光金1+8G  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5ceb3cee05cf548.png",
+			"price": " ￥ 4499 ",
+			"link": "/product/829/1195"
+		},
+		{
+			"name": "努比亚阿尔法 伯爵黑（移动版） ",
+			"peizhi": "1G+8G  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5d4bca53bab4261.png",
+			"price": " ￥ 2999 ",
+			"link": "/product/829/1217"
+		},
+		{
+			"name": "红魔Mars 曜石黑 ",
+			"peizhi": "8GB+128GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5c37f65d4e1ae1.png",
+			"price": " ￥ 2099 ",
+			"link": "/product/793/1104"
+		},
+		{
+			"name": "红魔Mars 曜石黑 ",
+			"peizhi": "6GB+64GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5c37f65d4e1ae1.png",
+			"price": " ￥ 1899 ",
+			"link": "/product/793/1105"
+		},
+		{
+			"name": "红魔Mars 迷彩色 ",
+			"peizhi": "10GB+256GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5cee1d61eb2b970.png",
+			"price": " ￥ 2999 ",
+			"link": "/product/793/1106"
+		},
+		{
+			"name": "红魔Mars 烈焰红 ",
+			"peizhi": "8GB+128GB  ",
+			"imgUrl": "//oss.static.nubia.cn/upload/5c161f447c1ff9.png",
+			"price": " ￥ 2099 ",
+			"link": "/product/793/1128"
+		},
+		{
+			"name": "红魔Mars 烈焰红 ",
+			"peizhi": "6GB+64GB  ",
+			"imgUrl": "//oss.static.nubia.cn/upload/5c161f447c1ff9.png",
+			"price": " ￥ 1899 ",
+			"link": "/product/793/1129"
+		},
+		{
+			"name": "X 深空灰 ",
+			"peizhi": "6GB+64GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5da66989eee2e91.png",
+			"price": " ￥ 2199 ",
+			"link": "/product/760/1066"
+		},
+		{
+			"name": "X 深空灰 ",
+			"peizhi": "8GB+128GB  ",
+			"imgUrl": "//oss.static.nubia.cn/pic/154097571431.png",
+			"price": " ￥ 2399 ",
+			"link": "/product/760/1067"
+		},
+		{
+			"name": "X 黑金 ",
+			"peizhi": "8GB+256GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5c37ff7b69a8693.png",
+			"price": " ￥ 2699 ",
+			"link": "/product/760/1098"
+		},
+		{
+			"name": "X 星空典藏版（梵高版） ",
+			"peizhi": "8GB+512GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5c3800478d63198.png",
+			"price": " ￥ 4999 ",
+			"link": "/product/760/1127"
+		},
+		{
+			"name": "X 蓝金版 ",
+			"peizhi": "蓝金版8+256GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5cb7e735692c647.png",
+			"price": " ￥ 2699 ",
+			"link": "/product/760/1139"
+		},
+		{
+			"name": "M3 钻石黑 ",
+			"peizhi": "6GB+128GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5cb7e733cd33071.png",
+			"price": " ￥ 2099 ",
+			"link": "/product/752/1136"
+		},
+		{
+			"name": "M3 极光蓝 ",
+			"peizhi": "6GB+128GB  ",
+			"imgUrl": "//oss.static.nubia.cn/active/5c35d016ee80f11.png",
+			"price": " ￥ 2099 ",
+			"link": "/product/752/1137"
+		}
+	]
+}
