@@ -50,7 +50,7 @@
     const imgUrls = [];
 
     for (let i = 0; i <= 131; i++) {
-      let path = `../images/${i.toString().padStart(4,"0")}.jpg`;
+      let path = `https://apks-1252514056.cos.ap-chengdu.myqcloud.com/demo/${i.toString().padStart(4,"0")}.jpg`;
       imgUrls.push(path);
     }
 
@@ -99,8 +99,8 @@
         if( nowFrame != targetFrame ){
           targetFrame - nowFrame > 0 ? nowFrame++ : nowFrame--;
           isPlaying = true;
-          setTimeout(loop,5);
-          // window.requestAnimationFrame(loop);
+          // setTimeout(loop,5);
+          window.requestAnimationFrame(loop);
         }else{
           console.log("now:", nowFrame )
           console.log("target:", targetFrame )
