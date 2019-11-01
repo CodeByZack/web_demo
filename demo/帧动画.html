@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #frame-container{
+      top: 0;
+      left: 0;
+      position: fixed;
+      height: 100vh;
+      width: 100%;
+      /* background: url("../images/0000.jpg"); */
+      background-size: cover;
+      text-align: center;
+      line-height: 100vh;
+      color: #ffffff;
+    }
+    #frame-container img{
+      width: 100%;
+	    height: 100%;
+      object-fit: cover;
+    }
+    .container{
+      height: 200vh;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="frame-container">
+    <img src="../images/0000.jpg"/>
+  </div>
+  <div class="container">
+
+  </div>
+  <script>
+    const elm = document.querySelector("#frame-container");
+    const img = document.querySelector("#frame-container img");
+    // elm.innerText = "0/131";
+
+    let total = 131;
+    let preLoad = 0;
+    let lastScrollTop = 0;
+    let nowFrame = 0;
+    let targetFrame = 0;
+    let isPlaying = false;
+    const imgUrls = [];
+
+    for (let i = 0; i <= 131; i++) {
+      let path = `../images/${i.toString().padStart(4,"0")}.jpg`;
+      imgUrls.push(path);
+    }
+
+    const preloadImg = (arr)=>{
+      for(var i =0; i< arr.length ;i++) {
+        let imgObj = new Image(); // 创建图片对象
+        imgObj.src = arr[i];
+        imgObj.onload = count(arr[i]);
+      }
+    }
+
+    const count = (url) => () => {
+      console.log( url ,"加载完成！" );
+      preLoad++;
+      if(preLoad < total){
+        // elm.innerText = `${preLoad}/${total}`;
+      }else{
+        // elm.innerText = ""
+        // play();
+      }
+    }
+
+    preloadImg(imgUrls);
+
+    window.onscroll = ()=>{
+      let screenHeight = document.documentElement.clientHeight;
+      let step = screenHeight/131;
+      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      let targetFrame = Math.floor(scrollTop/step);
+      console.log( scrollTop,targetFrame )
+      play(targetFrame);
+    }
+
+    const play = (_targetFrame)=>{
+      if( _targetFrame == nowFrame ) return;
+      if(_targetFrame > 131 && nowFrame == 131)return; 
+      if( _targetFrame > 131 && nowFrame < 131){
+        targetFrame = 131;
+      }else{
+        targetFrame =_targetFrame;
+      }
+
+      const loop = ()=>{
+        img.src = imgUrls[nowFrame];
+        // console.log( nowFrame,to );
+        if( nowFrame != targetFrame ){
+          targetFrame - nowFrame > 0 ? nowFrame++ : nowFrame--;
+          isPlaying = true;
+          window.requestAnimationFrame(loop);
+        }else{
+          console.log("now:", nowFrame )
+          console.log("target:", targetFrame )
+          isPlaying = false;
+        }
+      }
+      if(!isPlaying)loop();
+    }
+
+
+
+  </script>
+</body>
+</html>
