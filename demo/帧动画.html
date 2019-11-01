@@ -99,7 +99,8 @@
         if( nowFrame != targetFrame ){
           targetFrame - nowFrame > 0 ? nowFrame++ : nowFrame--;
           isPlaying = true;
-          window.requestAnimationFrame(loop);
+          setTimeout(loop,5);
+          // window.requestAnimationFrame(loop);
         }else{
           console.log("now:", nowFrame )
           console.log("target:", targetFrame )
