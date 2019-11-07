@@ -1,3 +1,58 @@
-div{
+*{
+	font-family:'Monoton',cursive;
+}
+.topbg{
+  position: relative;
+  height: 100vh;
   text-align: center;
+  background: url('../img/bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 70%;
+  background-attachment: fixed;
+}
+.topbg p{
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 3rem;
+  color: #ffffff;
+}
+.topbg .down{
+  position: absolute;
+  top: 200%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: downUp 1s ease-in-out infinite alternate-reverse;
+}
+.topbg .down:before{
+  content: "";
+  position: relative;
+  display: block;
+  width: 4px;
+  height: 20px;
+  background: #fff;
+  left: 8px;
+  top: 2px;
+  border-radius: 4px;
+}
+.topbg .down:after{
+  content: "";
+  position: relative;
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-width: 10px;
+  border-style: solid;
+  border-color:#ffffff transparent transparent transparent;
+}
+
+@keyframes downUp {
+  from {
+    transform : translateY(-10%);
+  }
+  to {
+    transform : translateY(10%);
+  }
 }
