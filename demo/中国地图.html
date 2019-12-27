@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>中国地图DEMO</title>
+    <!-- <script src="./lib/d3.min.js"></script> -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <script src="./lib/d3-geo.min.js"></script>
+    <script src="./lib/d3-array.min.js"></script>
+    <style>
+      .main {
+        height: 300px;
+        width: 100%;
+        background: #333333;
+      }
+      .tooltip{
+        width: 120px;
+        height: auto;
+        font-size: 14px;
+        text-align: center;
+        border-style: solid;
+        border-width: 1px;
+        background-color: white;
+        border-radius: 5px;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <!--  绘图容器 -->
+    <svg id="map" class="main" viewBox="0 0 400 300" style="border:1px solid greenyellow"></svg>
+    <script>
+
+      const svgWidth = 400;
+      const svgHeight = 300;
+
+      let svgContainer = d3.select("#map").append("g");
+
+      const color = ()=>{
+        var num = [0,1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f"];
+        var n = Math.ceil(Math.random()*15);
+        var color = "";
+        for(var i=0;i<6;i++){
+            var n = Math.ceil(Math.random()*15);
+            color += num[n];
+        }
+        return "#" + color
+      }
+
+      const draw = nodes => {
+        //墨卡托坐标系
+        let projection = d3.geoMercator();
+        //坐标映射
+        projection.fitExtent(
+          [
+            [0, 0],
+            [svgWidth, svgHeight]
+          ],
+          nodes
+        );
+        let path = d3.geoPath(projection);
+        console.log(path);
+        const polygonNode = svgContainer
+          .selectAll("path")
+          .data(nodes.features)
+          .enter()
+          .append("path")
+          .attr("d", path)
+          .attr("fill", color)
+          .attr("opacity", 0.5)
+          .attr("stroke", "yellow")
+          .attr("stroke-width", 1)
+          .on("mouseover", function(d, i) {
+            d3.select(this)
+              .style("opacity",1)
+              .style("stroke-width",2)
+              .style("cursor","pointer"); 
+          })
+          .on("mouseout", function(d) {
+            d3.select(this)
+              .style("opacity",0.5)
+              .style("stroke-width",0.5)
+              .style("cursor","normal");
+          });
+
+  
+        // let dx = 40,x1=50,y1=50,x2=300,y2=300;
+        // let dy = Math.round(Math.abs( ( ( y2 - y1 ) / ( x2 - x1 ) ) * dx ));
+        // //向右上弯曲
+        // let cpx = Math.round(( x1 + x2 ) / 2 + dx);
+        // let cpy = Math.round(( x1 + x2 ) / 2 - dy);
+
+        // var path2 = d3.path();
+        // path2.moveTo(x1,y1);
+        // path2.quadraticCurveTo(cpx,cpy,x2,y2);
+        
+        // svgContainer.append('path')
+        //     .attr('d', path2.toString())
+        //     .style('fill','none')
+        //     .style('stroke','red')
+        //     .style('stroke-width','2');
+      };
+
+      d3.json("./assets/china.json",(json)=>{
+        json && draw(json);
+      }) 
+    </script>
+  </body>
+</html>
