@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>中国地图DEMO</title>
     <!-- <script src="./lib/d3.min.js"></script> -->
+    <!-- <script src="./lib/d3.min.js"></script> -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
-
     <script src="./lib/d3-geo.min.js"></script>
     <script src="./lib/d3-array.min.js"></script>
     <style>
@@ -27,6 +27,15 @@
         border-radius: 5px;
         position: absolute;
       }
+      .cover{
+        stroke-dasharray: 10;
+        animation: dash 10s linear;
+      }
+      @keyframes dash {
+        to {
+          stroke-dashoffset: 1000;
+        }
+      }
     </style>
   </head>
   <body>
@@ -37,7 +46,8 @@
       const svgWidth = 400;
       const svgHeight = 300;
 
-      let svgContainer = d3.select("#map").append("g");
+      let svgContainer = d3.select("#map").append("svg");
+      let testContainer = d3.select("#testd3");
 
       const color = ()=>{
         var num = [0,1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f"];
@@ -50,7 +60,35 @@
         return "#" + color
       }
 
-      const draw = nodes => {
+      const d3API = (x2,y2)=>{
+        if(!x2 || !y2 )return;
+
+        const CTU = [190.28941772321906, 207.8915671645981];
+        let x1 = CTU[0];
+        let y1 = CTU[1];
+        let cpx = x1;
+        let cpy = y2;
+        // console.log( "===d3API===" )
+        // let dx = 10;
+        // let dy = Math.round(Math.abs( ( ( y2 - y1 ) / ( x2 - x1 ) ) * dx ));
+        // //向右上弯曲
+        // let cpx = Math.round(( x1 + x2 ) / 2 + dx);
+        // let cpy = Math.round(( x1 + x2 ) / 2 - dy);
+
+        var path = d3.path();
+        path.moveTo(x1,y1);
+        path.quadraticCurveTo(cpx,cpy,x2,y2);
+        return svgContainer.append('path')
+            .attr('d', path.toString())
+            .attr('class','cover')
+            .style('fill','none')
+            .style('stroke','red')
+            .style('stroke-width','2');
+      }
+
+      const drawMap = nodes => {
+        console.log("draw-map")
+        let tempCover = null;
         //墨卡托坐标系
         let projection = d3.geoMercator();
         //坐标映射
@@ -62,7 +100,6 @@
           nodes
         );
         let path = d3.geoPath(projection);
-        console.log(path);
         const polygonNode = svgContainer
           .selectAll("path")
           .data(nodes.features)
@@ -74,39 +111,27 @@
           .attr("stroke", "yellow")
           .attr("stroke-width", 1)
           .on("mouseover", function(d, i) {
+            tempCover = d3API(...path.centroid(d));
             d3.select(this)
               .style("opacity",1)
               .style("stroke-width",2)
               .style("cursor","pointer"); 
           })
           .on("mouseout", function(d) {
+            if(tempCover)tempCover.remove();
             d3.select(this)
               .style("opacity",0.5)
               .style("stroke-width",0.5)
               .style("cursor","normal");
           });
-
-  
-        // let dx = 40,x1=50,y1=50,x2=300,y2=300;
-        // let dy = Math.round(Math.abs( ( ( y2 - y1 ) / ( x2 - x1 ) ) * dx ));
-        // //向右上弯曲
-        // let cpx = Math.round(( x1 + x2 ) / 2 + dx);
-        // let cpy = Math.round(( x1 + x2 ) / 2 - dy);
-
-        // var path2 = d3.path();
-        // path2.moveTo(x1,y1);
-        // path2.quadraticCurveTo(cpx,cpy,x2,y2);
-        
-        // svgContainer.append('path')
-        //     .attr('d', path2.toString())
-        //     .style('fill','none')
-        //     .style('stroke','red')
-        //     .style('stroke-width','2');
       };
 
-      d3.json("./assets/china.json",(json)=>{
-        json && draw(json);
+      d3.json("./assets/china.json").then((json)=>{
+        drawMap(json)
+      },err=>{
+        console.log(err);
       }) 
+
     </script>
   </body>
 </html>
