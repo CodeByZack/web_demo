@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="../js/util.js"></script>
+<title>任意文件转base64-直接拖进来</title>
+<style>
+    #down{
+        position: fixed;
+        left: 0;
+        top: 0;
+    }
+    body { word-break: break-all; margin: 0 1em; min-height: 100vh; font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace; overflow: hidden;}
+    .empty::before{position: absolute; font-size: 50px; content: '任意文件\A拖到这里'; white-space: pre; left: 50%; top: 50%; transform: translate(-50%,-50%); color: gray;}
+</style>
+</head>
+<body class="empty">
+    <div id="down">
+        <a href="">测试转换后下载</a>
+    </div>
+<script>
+    window.addEventListener("dragenter", function(event) { event.preventDefault(); }, false);
+    window.addEventListener("dragover", function(event) { event.preventDefault(); }, false);
+    window.addEventListener("drop", function(event) {
+        const name = event.dataTransfer.files[0].name;
+        fileToBase64(event.dataTransfer.files[0]).then(res=>{
+            document.body.insertAdjacentHTML("afterBegin", '<p>' + res + '</p>');
+            document.body.classList.remove('empty');
+
+            const file = base64ToFile(res,name);
+            const downLoad =  document.querySelectorAll('#down a')[0];
+		    downLoad.setAttribute('href',URL.createObjectURL(file));
+		    downLoad.setAttribute('download',name);
+        },err=>{
+            console.log(err);
+        })
+
+        event.preventDefault();
+    }, false);
+</script>
+
+</body>
+</html>
