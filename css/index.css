@@ -14,8 +14,12 @@
   left: 50%;
   transform: translate(-50%,-50%);
 }
-.page-one .left .center p{
-  margin-top: 10px;
+.page-one .left .center #jinrishici-sentence{
+  vertical-align: middle;
+  line-height: normal;
+  white-space: nowrap;
+  display: inline-block;
+  font-size: 40px;
 }
 .page-one .right{
   flex: 1;
