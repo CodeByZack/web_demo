@@ -1,8 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const isWin = /^win/.test(process.platform);
-const notMined = ['.DS_Store', '.vscode', '.idea']
-const sysFolderFilter = file => !notMined.includes(file) //过滤器,过滤掉系统文件
+
+const prefix = "https://codebyzack.github.io/web_demo/";
+
 
 //demo路径
 const demoDirPath = path.resolve('demo');
@@ -14,7 +15,7 @@ const allHtmls = allPaths.filter(p=>path.parse(p).ext === '.html');
 
 const htmlLinks = allHtmls.map((l,i)=>{
     const name = path.parse(l).name;
-    let mdLink =  `${i+1}、[${name}](${path.join('demo',name)})`;
+    let mdLink =  `${i+1}、[${name}](${prefix}${path.join('demo',name)})`;
     if(isWin){
         mdLink = mdLink.replace(/\\/g, "/");
     }
