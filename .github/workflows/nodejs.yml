@@ -21,3 +21,6 @@ jobs:
         node-version: '10.x'
     - run: node node/updateReadme.js
     - run: git status
+    - run: git add .
+    - run: git commit -m "ci skip"
+    - run: git push    
