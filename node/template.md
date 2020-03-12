@@ -13,15 +13,21 @@
 
 ### 每日一文
 
-整理中。。。
+1. 小程序(每日一篇散文+)
+
+![每日一篇散文+](https://apks-1252514056.cos.ap-chengdu.myqcloud.com/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%AF%87%E6%95%A3%E6%96%87%2B.jpg)
+
+2. pc端，年代久远，很难用。 [地址](https://emptymountain.netlify.com/)
+
+3. 安卓apk，年代久远。[项目地址](https://github.com/CodeByZack/mryw-android-bmob)
 
 ### 其它
 
 1. [空山翻译](https://marketplace.visualstudio.com/items?itemName=zackdk.empty-translate#review-details)----vscode翻译插件/直接搜索名字可安装
-2. [reduxtool](https://www.npmjs.com/package/@zackdk/reduxtool)----简化redux模板代码
-3. [qcos-upload](https://www.npmjs.com/package/qcos-upload)----腾讯对象储存上传工具，基于qcloud-upload修改，修复了在window上使用得问题
+2. [towxss](https://www.npmjs.com/package/towxss)----小程序自动把less转为wxss
+3. [reduxtool](https://www.npmjs.com/package/@zackdk/reduxtool)----简化redux模板代码
+4. [qcos-upload](https://www.npmjs.com/package/qcos-upload)----腾讯对象储存上传工具
 
-4. [towxss](https://www.npmjs.com/package/towxss)----小程序自动把less转为wxss
 
 
 
