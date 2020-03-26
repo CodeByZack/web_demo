@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+    <script src="./lib/d3.min.js"></script>
+    <title>Document</title>
+    <script src="../js/hanoi.js"></script>
+    <style>
+      body {
+        background: #f9f7f6;
+      }
+      .title {
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        font-weight: 600;
+        font-size: 2em;
+        line-height: 1;
+        font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial,
+          "Microsoft YaHei", FreeSans, Arimo, "Droid Sans",
+          "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3",
+          "FontAwesome", sans-serif;
+      }
+      .container {
+        padding-top: 100px;
+        display: flex;
+        width: 80%;
+        margin: 0 auto;
+        height: 200px;
+      }
+      .container .pinbox {
+        position: relative;
+        flex: 1;
+      }
+      .container .pinbox .pin:before {
+        content: "";
+        width: 2px;
+        height: 100%;
+        background-color: #333;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .container .pinbox .pin:after {
+        content: "";
+        height: 2px;
+        width: 90%;
+        background-color: #333;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .container .pinbox span {
+        position: absolute;
+        visibility: visible;
+        left: 50%;
+        transform: translateX(-50%);
+        /* top: 184px; */
+        bottom: -20px;
+        font: bold 10px Tahoma;
+      }
+      .container .pinbox .plate {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 10px;
+        width: 40px;
+        background-color: deepskyblue;
+        border-radius: 5px;
+      }
+      .step-desc{
+        margin: 40px 0;
+        text-align: center;
+        font: bold 20px Tahoma;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="title">
+        汉诺塔演示
+      </div>
+      <div class="container">
+        <div class="pinbox a">
+          <div class="pin"></div>
+          <span>A</span>
+        </div>
+        <div class="pinbox b">
+          <div class="pin"></div>
+          <span>B</span>
+        </div>
+        <div class="pinbox c">
+          <div class="pin"></div>
+          <span>C</span>
+        </div>
+      </div>
+      <div class="step-desc">
+
+      </div>
+    </div>
+    <script>
+      const draw = (data, selector) => {
+        const update = d3
+          .select(selector)
+          .selectAll(".plate")
+          .data(data);
+
+        const enter = update.enter();
+        const exit = update.exit();
+
+        update
+          .style("width", d => {
+            return `${d.size * 10}%`;
+          })
+          .style("bottom", function(d, index) {
+            return `${(data.length - index) * 15}px`;
+          });
+
+        enter
+          .append("div")
+          .attr("class", "plate")
+          .style("width", d => {
+            return `${d.size * 10}%`;
+          })
+          .style("bottom", function(d, index) {
+            return `${(data.length - index) * 15}px`;
+          });
+
+        exit.remove();
+      };
+      const moves = GAME(4, "a", "b", "c");
+      console.log(moves);
+      var nowStep = 0;
+
+      const move = () => {
+        const stepData = moves[nowStep++];
+        console.log(nowStep, stepData);
+        if (!stepData) return;
+        const desc = `第${nowStep}步：${stepData.stepDesc?stepData.stepDesc:""}`;
+        d3.select(".step-desc").text(desc);
+        draw(stepData.a.paltes, ".pinbox.a");
+        draw(stepData.b.paltes, ".pinbox.b");
+        draw(stepData.c.paltes, ".pinbox.c");
+        setTimeout(move, 1000);
+      };
+      move();
+    </script>
+  </body>
+</html>
