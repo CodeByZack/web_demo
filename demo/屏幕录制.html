@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>屏幕录制</title>
+    <style>
+      #test {
+        background: #333;
+        width: 1280px;
+        height: 780px;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      <button id="start">Start Capture</button>
+      <button id="stop">Stop Capture</button>
+    </p>
+    <video id="video" autoplay=""></video>
+    <video id="record-video" controls autoplay=""></video>
+
+    <script>
+      const videoElem = document.getElementById("video");
+      const startElem = document.getElementById("start");
+      const stopElem = document.getElementById("stop");
+      const recordedVideo = document.getElementById("record-video");
+      let mediaRecorder = null;
+      let chunks = [];
+      // Options for getDisplayMedia()
+      const displayMediaOptions = {
+        video: { cursor: "always"},
+        audio: false,
+      };
+
+      // Set event listeners for the start and stop buttons
+      startElem.addEventListener("click",function (evt) {startCapture();},false);
+      stopElem.addEventListener("click",function (evt) {stopCapture();},false);
+      const startRecord = (recorder)=>{
+        recorder.start();
+        console.log(recorder.state);
+        console.log("recorder started");
+      };
+      const bindEvents = (recorder)=>{
+        recorder.ondataavailable = (e) => {
+            chunks.push(e.data);
+        }
+        recorder.onstop = (e)=>{
+            var blob = new Blob(chunks, { 'type' : 'video/webm' });
+            recordedVideo.src = window.URL.createObjectURL(blob);
+        };
+      };
+      const stopRecord = (recorder)=>{
+        recorder.stop();
+        console.log(recorder.state);
+        console.log("recorder stopped");
+      };
+
+      const startCapture = async ()=>{
+        try {
+          captureStream = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
+          videoElem.srcObject = captureStream;
+          mediaRecorder = new MediaRecorder(captureStream);
+          bindEvents(mediaRecorder);
+          startRecord(mediaRecorder);
+        } catch (err) {
+          console.error("Error: " + err);
+        }
+      }
+      const stopCapture = (evt)=>{
+        let tracks = videoElem.srcObject.getTracks();
+        tracks.forEach((track) => track.stop());
+        videoElem.srcObject = null;
+        stopRecord(mediaRecorder);
+      }
+
+    </script>
+  </body>
+</html>
