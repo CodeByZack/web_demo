@@ -45,28 +45,30 @@
 
 4、[webcomponents](https://codebyzack.github.io/web_demo/demo/webcomponents)
 
-5、[中国地图](https://codebyzack.github.io/web_demo/demo/中国地图)
+5、[xgplayer](https://codebyzack.github.io/web_demo/demo/xgplayer)
 
-6、[前端history路由](https://codebyzack.github.io/web_demo/demo/前端history路由)
+6、[中国地图](https://codebyzack.github.io/web_demo/demo/中国地图)
 
-7、[垂直水平居中](https://codebyzack.github.io/web_demo/demo/垂直水平居中)
+7、[前端history路由](https://codebyzack.github.io/web_demo/demo/前端history路由)
 
-8、[字体高度测试](https://codebyzack.github.io/web_demo/demo/字体高度测试)
+8、[垂直水平居中](https://codebyzack.github.io/web_demo/demo/垂直水平居中)
 
-9、[小球滚动](https://codebyzack.github.io/web_demo/demo/小球滚动)
+9、[字体高度测试](https://codebyzack.github.io/web_demo/demo/字体高度测试)
 
-10、[屏幕录制](https://codebyzack.github.io/web_demo/demo/屏幕录制)
+10、[小球滚动](https://codebyzack.github.io/web_demo/demo/小球滚动)
 
-11、[帧动画](https://codebyzack.github.io/web_demo/demo/帧动画)
+11、[屏幕录制](https://codebyzack.github.io/web_demo/demo/屏幕录制)
 
-12、[弹幕模拟](https://codebyzack.github.io/web_demo/demo/弹幕模拟)
+12、[帧动画](https://codebyzack.github.io/web_demo/demo/帧动画)
 
-13、[汉诺塔](https://codebyzack.github.io/web_demo/demo/汉诺塔)
+13、[弹幕模拟](https://codebyzack.github.io/web_demo/demo/弹幕模拟)
 
-14、[烟花效果](https://codebyzack.github.io/web_demo/demo/烟花效果)
+14、[汉诺塔](https://codebyzack.github.io/web_demo/demo/汉诺塔)
 
-15、[粒子文字](https://codebyzack.github.io/web_demo/demo/粒子文字)
+15、[烟花效果](https://codebyzack.github.io/web_demo/demo/烟花效果)
 
-16、[雨滴特效](https://codebyzack.github.io/web_demo/demo/雨滴特效)
+16、[粒子文字](https://codebyzack.github.io/web_demo/demo/粒子文字)
 
-17、[鼠标跟随粒子效果](https://codebyzack.github.io/web_demo/demo/鼠标跟随粒子效果)
+17、[雨滴特效](https://codebyzack.github.io/web_demo/demo/雨滴特效)
+
+18、[鼠标跟随粒子效果](https://codebyzack.github.io/web_demo/demo/鼠标跟随粒子效果)
