@@ -69,6 +69,8 @@
 
 16、[粒子文字](https://codebyzack.github.io/web_demo/demo/粒子文字)
 
-17、[雨滴特效](https://codebyzack.github.io/web_demo/demo/雨滴特效)
+17、[解码GIF](https://codebyzack.github.io/web_demo/demo/解码GIF)
 
-18、[鼠标跟随粒子效果](https://codebyzack.github.io/web_demo/demo/鼠标跟随粒子效果)
+18、[雨滴特效](https://codebyzack.github.io/web_demo/demo/雨滴特效)
+
+19、[鼠标跟随粒子效果](https://codebyzack.github.io/web_demo/demo/鼠标跟随粒子效果)
