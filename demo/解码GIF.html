@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解码GIF</title>
+    <script src="../js/omggif.js"></script>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #gif-canvas{
+            border: 1px solid #333;
+            margin-bottom: 20px;
+        }
+        .info{
+            display: block;
+            margin: 20px 0;
+        }
+        .btn{
+            background-color: #999;
+            border: 1px solid #333;
+            padding: 5px 10px;
+            cursor: pointer;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <canvas id="gif-canvas"></canvas>
+        <input id='input' type="file"/>
+        <span class="info">请选择GIF图片</span>
+        <div>
+            <span class="btn play">play</span>
+            <span class="btn pause">pause</span>
+            <span class="btn stop">stop</span>
+        </div>
+    </div>
+
+    <script>
+        const input = document.querySelector('#input');
+        const canvas = document.querySelector('#gif-canvas');
+        const ctx = canvas.getContext('2d');
+        const info = document.querySelector('.info');
+        const playBtn = document.querySelector('.btn.play');
+        const pauseBtn = document.querySelector('.btn.pause');
+        const stopBtn = document.querySelector('.btn.stop');
+        
+        
+        let frames = [];
+        let nowFrame = 0;
+        let numFrames = 0;
+        let loopCount = 0;
+        let playStatus = 'stop';
+
+
+        const handler = async ()=>{
+            const curFile = input.files[0];
+            const arrBuf = await curFile.arrayBuffer();
+            const buffer = new Uint8Array(arrBuf);
+            const decodeGif = new GifReader(buffer);
+
+            console.log(decodeGif);
+            canvas.width = decodeGif.width;
+            canvas.height = decodeGif.height;
+
+            frames = [];
+
+            numFrames = decodeGif.numFrames();
+            loopCount = decodeGif.loopCount();
+
+            info.innerText = `width:${decodeGif.width}/height:${decodeGif.height}/总帧数:${numFrames}`;
+
+            for(let i = 0; i < numFrames; i++){
+                const frameInfo = decodeGif.frameInfo(i);
+                const imagedata = ctx.createImageData(decodeGif.width, decodeGif.height);
+                if (i > 0 && frameInfo.disposal < 2) {
+                    imagedata.data.set(new Uint8ClampedArray(frames[i - 1].data.data));
+                }
+                decodeGif.decodeAndBlitFrameRGBA(i,imagedata.data);
+                frames.push({data:imagedata,delay:frameInfo.delay*10});
+            };
+            startLoop();
+            // ctx.putImageData(frames[numFrames-1],0,0);
+        };
+
+        input.addEventListener('change',handler);
+        playBtn.addEventListener('click',()=>{
+            if(playStatus === 'play')return;
+            playStatus = 'play';
+            startLoop();
+        });
+        pauseBtn.addEventListener('click',()=>{
+            playStatus = 'pause';
+        });
+        stopBtn.addEventListener('click',()=>{
+            playStatus = 'stop';
+        });
+
+        const startLoop = ()=>{
+            setTimeout(loop,0);
+        }
+
+        const loop = ()=>{
+            if(playStatus === 'stop'){
+                nowFrame = 0;
+                return;
+            }
+            if(playStatus === 'pause'){
+                return;
+            }
+            
+            if(nowFrame + 1 >= numFrames){
+                nowFrame = 0;
+            }else{
+                nowFrame++;
+            }
+            ctx.putImageData(frames[nowFrame].data,0,0);
+            setTimeout(loop,frames[nowFrame].delay);
+        };
+
+    </script>
+</body>
+</html>
