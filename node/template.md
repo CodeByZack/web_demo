@@ -33,6 +33,7 @@
 2. [towxss](https://www.npmjs.com/package/towxss)----小程序自动把less转为wxss
 3. [reduxtool](https://www.npmjs.com/package/@zackdk/reduxtool)----简化redux模板代码
 4. [qcos-upload](https://www.npmjs.com/package/qcos-upload)----腾讯对象储存上传工具
+5. [小词导航](https://www.xclinks.com/)----一个前端程序员的专属导航
 
 
 
