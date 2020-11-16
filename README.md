@@ -54,26 +54,30 @@
 
 7、[前端history路由](https://codebyzack.github.io/web_demo/demo/前端history路由)
 
-8、[垂直水平居中](https://codebyzack.github.io/web_demo/demo/垂直水平居中)
+8、[在线合并m3u8](https://codebyzack.github.io/web_demo/demo/在线合并m3u8)
 
-9、[字体高度测试](https://codebyzack.github.io/web_demo/demo/字体高度测试)
+9、[垂直水平居中](https://codebyzack.github.io/web_demo/demo/垂直水平居中)
 
-10、[小球滚动](https://codebyzack.github.io/web_demo/demo/小球滚动)
+10、[字体高度测试](https://codebyzack.github.io/web_demo/demo/字体高度测试)
 
-11、[屏幕录制](https://codebyzack.github.io/web_demo/demo/屏幕录制)
+11、[小球滚动](https://codebyzack.github.io/web_demo/demo/小球滚动)
 
-12、[帧动画](https://codebyzack.github.io/web_demo/demo/帧动画)
+12、[屏幕录制](https://codebyzack.github.io/web_demo/demo/屏幕录制)
 
-13、[弹幕模拟](https://codebyzack.github.io/web_demo/demo/弹幕模拟)
+13、[帧动画](https://codebyzack.github.io/web_demo/demo/帧动画)
 
-14、[汉诺塔](https://codebyzack.github.io/web_demo/demo/汉诺塔)
+14、[弹幕模拟](https://codebyzack.github.io/web_demo/demo/弹幕模拟)
 
-15、[烟花效果](https://codebyzack.github.io/web_demo/demo/烟花效果)
+15、[抛物线动画](https://codebyzack.github.io/web_demo/demo/抛物线动画)
 
-16、[粒子文字](https://codebyzack.github.io/web_demo/demo/粒子文字)
+16、[汉诺塔](https://codebyzack.github.io/web_demo/demo/汉诺塔)
 
-17、[解码GIF](https://codebyzack.github.io/web_demo/demo/解码GIF)
+17、[烟花效果](https://codebyzack.github.io/web_demo/demo/烟花效果)
 
-18、[雨滴特效](https://codebyzack.github.io/web_demo/demo/雨滴特效)
+18、[粒子文字](https://codebyzack.github.io/web_demo/demo/粒子文字)
 
-19、[鼠标跟随粒子效果](https://codebyzack.github.io/web_demo/demo/鼠标跟随粒子效果)
+19、[解码GIF](https://codebyzack.github.io/web_demo/demo/解码GIF)
+
+20、[雨滴特效](https://codebyzack.github.io/web_demo/demo/雨滴特效)
+
+21、[鼠标跟随粒子效果](https://codebyzack.github.io/web_demo/demo/鼠标跟随粒子效果)
