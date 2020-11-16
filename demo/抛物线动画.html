@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .ball {
+        background-color: red;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+      }
+      .target {
+        width: 100px;
+        height: 100px;
+        background-color: #2222;
+        position: fixed;
+        left: 100px;
+        top: 200px;
+      }
+      .left{
+          position: fixed;
+          left: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="left">
+      <span class="ball"></span>
+    </div>
+
+    <div class="target"></div>
+    <script>
+      function fly(srcDom, targetDom, option) {
+        option = option || {};
+        let a = option.a || 0.006;
+        let time = option.time || 1000;
+
+        //初始位置
+        let sx = srcDom.getBoundingClientRect().left;
+        let sy = srcDom.getBoundingClientRect().top;
+
+        //拷贝元素
+        let aniTarget = srcDom.cloneNode(true);
+        aniTarget.style.position = "fixed";
+        aniTarget.style.zIndex = 9999;
+        aniTarget.style.left = sx + "px";
+        aniTarget.style.top = sy + "px";
+        document.body.appendChild(aniTarget);
+        // console.log(aniTarget);
+
+        //终点位置
+        let tx = targetDom.getBoundingClientRect().left;
+        let ty = targetDom.getBoundingClientRect().top;
+
+        //求解abc
+        //y = a*x*x + b*x + c
+        //假设 起点坐标为（0,0），则 y = a*x*x + b*x
+        //计算相对坐标
+        let rx = tx - sx;
+        let ry = ty - sy;
+
+        //系数a
+        //计算系数b
+        let b = ry / rx - a * rx;
+        //计算步长
+        let frame = time / 16.7;
+        let step = rx / frame;
+
+        function getY(x) {
+          return a * x * x + b * x;
+        }
+
+        let totalstep = 0;
+        console.log('sx:'+sx+' sy:'+sy);
+        console.log('tx:'+tx+' ty:'+ty);
+        console.log('a:'+a+' b:'+b);
+        function update() {
+            console.log(totalstep);
+            console.log(rx);
+            console.log(step);
+          if (totalstep < rx) {
+            totalstep += step;
+            let tempx = totalstep + sx;
+            let tempy = getY(totalstep) + sy;
+            // console.log('sx:'+tempx+' sy:'+tempy);
+            aniTarget.style.left = tempx + "px";
+            aniTarget.style.top = tempy + "px";
+            requestAnimationFrame(update);
+          } else {
+            document.body.removeChild(aniTarget);
+          }
+        }
+        requestAnimationFrame(update);
+      }
+      
+      
+      const srcDom = document.querySelector('.ball');
+      const targetDom = document.querySelector('.target');      
+      
+      srcDom.addEventListener('click',()=>{
+          console.log("=============")
+          fly(srcDom,targetDom);
+      });
+
+    </script>
+  </body>
+</html>
