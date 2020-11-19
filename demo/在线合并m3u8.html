@@ -10,44 +10,31 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../js/m3u82mp4.js"></script>
     <video id="player" controls></video>
-    <button onclick="console.log('爱了爱了')" >爱了爱了</button>
+    
+    <div>
+      <input id="input" placeholder="在这输入m3u8链接" />
+      <button onclick="startDownload()" >开始下载并转换为mp4</button>
+    </div>
+    <div id="logger">
+
+    </div>
+
     <script>
-        const { createFFmpeg, fetchFile } = FFmpeg;
-        const ffmpeg = createFFmpeg({ log: true });
 
-        const m3u8Url = 'https://pptv.com-h-pptv.com/20190121/13285_7bb69ad7/index.m3u8';
+        const logger = (text)=>{
+          const loggerDiv = document.getElementById("logger");
+          loggerDiv.innerText = text;
+        };
 
-        const transcode = async (url) => {
-          const allTs = await getAllTs(url);
-          console.log(allTs);
-          await ffmpeg.load();
-          ffmpeg.FS('writeFile', 'index.m3u8', await fetchFile(m3u8IndexMap));
-
-          ffmpeg.setProgress((info) => {
-            console.log(info);
-            /*
-            * ratio is a float number between 0 to 1.
-            */
-          });
-
-          for (const ts of allTs) {
-              ffmpeg.FS('writeFile', ts.name, await fetchFile(ts.path));
-          }
-
-          await ffmpeg.run('-i', 'index.m3u8', '-c', 'copy' , 'output.mp4');
-          const data = ffmpeg.FS('readFile', 'output.mp4');
-          const video = document.getElementById('player');
-          video.src = URL.createObjectURL(new Blob([data.buffer], { type: 'video/mp4' }));
-        }
-
-
-        transcode(m3u8Url)
-
-        // getAllTs(m3u8Url).then(res=>{
-        //     console.log(res);
-
-        // });
-
+        const startDownload = ()=>{
+          const input = document.getElementById("input");
+          const value = input.value;
+          merge2mp4(value,logger).then(res=>{
+            console.log(res);
+            const video = document.getElementById('player');
+            video.src = res;
+          })
+        };
 
       </script>
 </body>
