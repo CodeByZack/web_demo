@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>在线合并m3u8</title>
-</head>
-<body>
+  </head>
+  <body>
     <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.9.4/dist/ffmpeg.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../js/m3u82mp4.js"></script>
     <video id="player" controls></video>
-    
+
     <div>
       <input id="input" placeholder="在这输入m3u8链接" />
-      <button onclick="startDownload()" >开始下载并转换为mp4</button>
+      <button onclick="startDownload()">开始下载并转换为mp4</button>
     </div>
-    <div id="logger">
-
-    </div>
+    <div id="logger"></div>
 
     <script>
+      const logger = (text) => {
+        const loggerDiv = document.getElementById("logger");
+        loggerDiv.innerText = text;
+      };
 
-        const logger = (text)=>{
-          const loggerDiv = document.getElementById("logger");
-          loggerDiv.innerText = text;
-        };
+      const startDownload = () => {
+        const input = document.getElementById("input");
+        const value = input.value;
+        merge2mp4(value, logger).then((res) => {
+          console.log(res);
+          const video = document.getElementById("player");
+          video.src = res;
+        });
+      };
 
-        const startDownload = ()=>{
-          const input = document.getElementById("input");
-          const value = input.value;
-          merge2mp4(value,logger).then(res=>{
-            console.log(res);
-            const video = document.getElementById('player');
-            video.src = res;
-          })
-        };
-
-      </script>
-</body>
+      (function () {
+        var src = "//cdn.jsdelivr.net/npm/eruda";
+        if (
+          !/eruda=true/.test(window.location) &&
+          localStorage.getItem("active-eruda") != "true"
+        )
+          return;
+        document.write("<scr" + 'ipt src="' + src + '"></scr' + "ipt>");
+        document.write("<scr" + "ipt>eruda.init();</scr" + "ipt>");
+      })();
+    </script>
+  </body>
 </html>
