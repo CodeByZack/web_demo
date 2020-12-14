@@ -14,14 +14,14 @@
     3. 如果自己手动打开新标签页，输入相同网址，并不会共享数据。
     4. 每个tab页的sessionStorage是相互独立的，除了在新开标签页时可能会存在拷贝关系，其余时候操作互不干扰。
   </pre>
-  <a href="/sessionstorage.html" target="_blank">a标签打开新标签页</a>
+  <a href="./sessionstorage.html" target="_blank">a标签打开新标签页</a>
   <button onclick="setItem()">往sessionStorage 写入testdata</button>
   <button onclick="openNewTab()">window.open()开一个标签页</button>
 
 
   <script>
     const openNewTab = ()=>{
-      window.open('/sessionstorage.html');
+      window.open('./sessionstorage.html');
     };
     const setItem = ()=>{
       sessionStorage.setItem("test",`testdata${Math.random()}`);
