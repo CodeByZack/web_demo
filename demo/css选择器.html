@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS选择器</title>
+  <style>
+    #id{
+      background-color: antiquewhite;
+    }
+
+    .class{
+      background-color: burlywood;
+    }
+
+    p{
+      background-color: chocolate;
+    }
+    div{
+      margin: 20px;
+      border: 2px solid #55333333;
+    }
+    a:link{
+      color: black;
+    }
+    a:active{
+      color: saddlebrown;
+    }
+    a:visited{
+      color: red;
+    }
+
+    .fakeELement{
+      position: relative;
+      padding: 40px;
+      text-align: center;
+    }
+    .fakeELement::after{
+      display: block;
+      position: absolute;
+      right: 0;
+      width: 40px;
+      height: 40px;
+      background-color: silver;
+      content: "after";
+    }
+
+    .fakeELement::before{
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 40px;
+      height: 40px;
+      background-color: silver;
+      content: "before";
+    }
+
+    div > img[alt="pic"]{
+      border-radius: 50%;
+    }
+
+    .father > .child{
+      background-color: teal;
+    }
+
+    .brother > .br1 + .br2{
+      background-color: steelblue;
+    }
+
+    .brotherRest > .item ~ .item2{
+      background-color: brown;
+    }
+
+  </style>
+</head>
+<body>
+  
+  <div id="id">id选择器</div>
+  <div class="class">class选择器</div>
+  <div>
+    <p>tag选择器</p>
+  </div>
+  <div>
+    <a href="http://baidu.com" target="_blank" rel="noopener noreferrer">伪类 :link :actived :visited</a>
+  </div>
+  <div class="fakeELement">伪元素 :before :after</div>
+  <div class="attr">
+    属性选择器
+    <img src="https://www.baidu.com/img/flexible/logo/pc/result.png" alt="pic"/>
+  </div>
+
+  <div class="father">
+    子元素选择器 >
+    <div class="child">子元素</div>
+  </div>
+
+  <div class="brother">
+    加号 + 
+    <div class="br1">兄弟1</div>
+    <div class="br2">兄弟2</div>
+    <div class="br2">兄弟3</div>
+  </div>
+
+  <div class="brotherRest">
+    波浪号 ~
+    <div class="item">1</div>
+    <div class="item2">2</div>
+    <div class="item2">3</div>
+    <div class="item2">4</div>
+    <div class="item2">5</div>
+  </div>
+
+</body>
+</html>
