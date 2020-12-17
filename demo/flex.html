@@ -42,38 +42,65 @@
     <script>
       const optionsArr = [
         {
+          key : "容器的属性",
+          type : "title"
+        },
+        {
           key: "flex-direction",
+          type : "select",
           values: ["row", "row-reverse", "column", "column-reverse"],
         },
         {
           key: "flex-wrap",
+          type : "select",
           values: ["nowrap", "wrap", "wrap-reverse"],
         },
         {
           key: "justify-content",
-          values: [
-            "flex-start",
-            "flex-end",
-            "center",
-            "space-between",
-            "space-around",
-            "stretch"
-          ],
+          type : "select",
+          values: ["flex-start","flex-end","center","space-between","space-around","stretch"],
         },
         {
           key: "align-items",
+          type : "select",
           values: ["flex-start", "flex-end", "center", "baseline", "stretch"],
         },
+        {
+          key : "一号子元素的属性",
+          type : "title",
+        },
+        {
+          key : "flex-basis",
+          type : "input",
+        },
+        {
+          key : "flex-grow",
+          type : "input",
+        },
+        {
+          key : "flex-shrink",
+          type : "input",
+        },
+        {
+          key : "align-self",
+          type : "select",
+          values : ["flex-start", "flex-end", "center", "baseline", "stretch"]
+        }
       ];
 
       const flexBox = document.querySelector(".flex-box");
-      const flexItems = document.querySelector(".flex-box > .item"); 
+      const flexItem = document.querySelector(".flex-box > .item"); 
       const applyStyle = (style) => {
         console.log(style);
         flexBox.style.flexDirection = style["flex-direction"];
         flexBox.style.flexWrap = style["flex-wrap"];
         flexBox.style.justifyContent = style["justify-content"];
         flexBox.style.alignItems = style["align-items"];
+
+        flexItem.style.flexBasis = style["flex-basis"];
+        flexItem.style.flexGrow = style["flex-grow"];
+        flexItem.style.flexShrink = style["flex-shrink"];
+        flexItem.style.alignSelf = style["align-self"];
       };
 
       OptionBox.init(optionsArr, applyStyle).mount();

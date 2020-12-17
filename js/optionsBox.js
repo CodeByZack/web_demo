@@ -134,17 +134,19 @@
     container.classList.add("options-box");
 
     optionArr.forEach((option) => {
-      const { key, values } = option;
+      const { key, values = [],type } = option;
       state[key] = values[0] || "";
       const p = document.createElement("p");
       const leftSpan = document.createElement("span");
       leftSpan.classList.add("left");
       leftSpan.append(key);
-      const rightInput = createInput(key, "select", values);
-      rightInput.classList.add("right");
-      // rightInput.append("todo");
       p.appendChild(leftSpan);
-      p.appendChild(rightInput);
+      if(type !== "title"){
+        const rightInput = createInput(key, type, values);
+        rightInput.classList.add("right");
+        // rightInput.append("todo");
+        p.appendChild(rightInput);
+      }
       container.appendChild(p);
     });
 
