@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片处理DEMO</title>
+  <style>
+    .img-choose{
+      text-align: center;
+    }
+    .show-box{
+      display: flex;
+    }
+    .show-box-left{
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #333;
+      text-align: center;
+    }
+    .show-box-right{
+      text-align: center;
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="img-choose">
+    <input type="file" id="input">
+  </div>
+  <div class="show-box">
+    <div class="show-box-left">
+      <img id="img"/>
+    </div>
+    <div class="show-box-right">
+      <canvas id="canvas"></canvas>
+    </div>
+  </div>
+  <div class="btn-group">
+    <button id="grey-btn">变灰</button>
+    <button id="revert-btn">反色</button>
+  </div>
+
+  <script>
+    const img = document.getElementById("img");
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext('2d');
+    const input = document.getElementById("input");
+    const grayscaleBtn = document.getElementById("grey-btn");
+    const invertBtn = document.getElementById("revert-btn");
+
+    const invert = ()=>{
+      ctx.drawImage(img, 0, 0);
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const data = imageData.data;
+      for (var i = 0; i < data.length; i += 4) {
+          data[i]     = 255 - data[i];     // red
+          data[i + 1] = 255 - data[i + 1]; // green
+          data[i + 2] = 255 - data[i + 2]; // blue
+      }
+      ctx.putImageData(imageData, 0, 0);
+
+    };
+    const grayscale  = ()=>{
+      ctx.drawImage(img, 0, 0);
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const data = imageData.data;
+      for (var i = 0; i < data.length; i += 4) {
+          var avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+          data[i]     = avg; // red
+          data[i + 1] = avg; // green
+          data[i + 2] = avg; // blue
+      }
+      ctx.putImageData(imageData, 0, 0);
+    };
+
+    const onClick = (type)=>()=>{
+      if(type === "grayscale"){
+        grayscale();
+      }else if(type === "invert"){
+        invert();
+      }
+    };
+
+
+    img.onload = ()=>{
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img,0,0,canvas.width,canvas.height);
+    };
+
+    grayscaleBtn.addEventListener("click",onClick("grayscale"));
+    invertBtn.addEventListener("click",onClick("invert"));
+
+    document.addEventListener("change",(e)=>{
+      const file = input.files[0];
+      const fileReader = new FileReader();
+      fileReader.onload = ()=>{
+        img.src = fileReader.result;
+      };
+      fileReader.readAsDataURL(file);
+    });
+
+
+
+
+
+  </script>
+
+</body>
+</html>

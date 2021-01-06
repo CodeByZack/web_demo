@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/nouislider.min.css">
+  <link rel="stylesheet" href="../css/videoeditor.css">
+  <script src="./lib/nouislider.min.js"></script>
+  <!-- <script src="//cdn.jsdelivr.net/npm/xgplayer@2.9.6/browser/index.js" type="text/javascript"></script> -->
+  <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.9.5/dist/ffmpeg.min.js"></script>
+
+  <title>裁剪video</title>
+</head>
+<body>
+  <div id="navigation">
+    <h1>视频裁剪工具</h1>
+    <div class="vertical-line"></div>
+    <p>作者为-codebyzack</p>
+  </div>
+  <div id="video-box">
+    <div class="left">
+      <div class="video-player-wrapper hide">
+        <video controls id="video-play"></video>
+      </div>
+      <div class="video-upload">
+        <input accept="video/mp4, video/quicktime, video/webm" style="display:none;" type="file" id="file-upload">
+        <img id="uploadicon" src="./assets/upload.svg">
+        <p>Drag and drop your video</p>
+        <p>MP4, MOV, or WEBM only</p>
+      </div>
+    </div>
+    <div class="right">
+      <h1>编辑你的视频</h1>
+      <p>裁剪视频</p>
+      <div class="control-box">
+        <div class="start flex1">
+          <label>start</label>
+          <button id="start-btn" class="disabled">00:00:00</button>
+        </div>
+        <div class="end flex1">
+          <label>end</label>
+          <button id="end-btn" class="disabled">00:00:00</button>
+        </div>
+        <div class="confirm flex1">
+          <button id="cut-btn">裁剪</button>
+        </div>
+      </div>
+      <div id="controlslider"></div>
+      <div class="loginfo-box">
+        
+      </div>
+      <div class="right-footer">
+        <button id="download-btn">下载</button>
+        <button id="recover-btn">恢复原视频</button>
+      </div>
+    </div>
+  </div>
+  <script src="../js/util.js"></script>
+  <script src="../js/ffmpeg-tool.js"></script>
+  <script src="../js/videocrop.js"></script>
+</body>
+</html>

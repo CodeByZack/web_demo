@@ -31,3 +31,10 @@ const fileToBase64 = file => {
     };
   });
 };
+
+const downLoadUrl = url => {
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "output.mp4";
+  a.click();
+}
