@@ -27,7 +27,7 @@ videoUpload.addEventListener('dragleave',()=>{
 videoUpload.addEventListener('drop',(e)=>{
   e.preventDefault();
   videoUpload.classList.remove("active");
-  var imageTypes = ['video/mp4', 'video/quicktime', 'video/webm'];
+  var imageTypes = ['video/mp4'];
     var file = e.dataTransfer.files[0];
     if (imageTypes.includes(file.type)) {
       handleFileChoose(file);
