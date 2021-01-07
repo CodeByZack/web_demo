@@ -11,7 +11,7 @@ const cropVideo = async (fileName, blobURL, start, end )=>{
   instance.FS('writeFile',fileName,await fetchFile(blobURL));
   
   // ffmpeg -ss 00:01:00 -i video.mp4 -to 00:02:00 -c copy -copyts cut.mp4
-  await instance.run('-ss',start, '-i', fileName, '-to', end,'-c','copy' ,'-copyts','output.mp4');
+  await instance.run('-i', fileName, '-ss',start, '-to', end,'-c','copy' ,'output.mp4');
   const data = instance.FS('readFile', 'output.mp4');
   const newBlobUrl = URL.createObjectURL(new Blob([data.buffer], { type: 'video/mp4' }));
   return newBlobUrl;
