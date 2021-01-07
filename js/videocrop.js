@@ -124,3 +124,5 @@ const handleFileChoose = (file)=>{
   videoPlayerWrapper.classList.remove("hide");
   videoUpload.classList.add("hide");
 };
+
+setFFmpegLogger(msg=>loginfoBox.innerText = msg);
