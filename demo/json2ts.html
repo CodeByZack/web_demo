@@ -13,14 +13,31 @@
     <div class="grid grid-cols-2 gap-4">
         <div class="box-border p-4 h-screen ">
             <div class="h-full w-full bg-gray-50 rounded">
-                <textarea class="h-full w-full p-2"></textarea>
+                <textarea id="jsonInput" class="resize-none	overflow-auto h-full w-full p-2"></textarea>
             </div>
         </div>
         <div class="box-border p-4	h-screen ">
-            <div class="h-full w-full bg-gray-50 rounded">
+            <pre id="tsOutput" class="overflow-auto h-full w-full bg-gray-50 rounded">
 
-            </div>
+            </pre>
         </div>
     </div>
+    <script>
+        const jsonInput = document.querySelector('#jsonInput');
+        const tsOutput = document.querySelector('#tsOutput');
+
+        jsonInput.addEventListener('input',(e)=>{
+            console.log(e.target.value);
+
+            const result = json2ts(e.target.value);
+
+            if(result){
+                tsOutput.innerText = result;
+            }
+
+        });
+
+
+    </script>
 </body>
 </html>
