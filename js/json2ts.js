@@ -46,23 +46,34 @@ class GenInterface {
     this.resStr += `  ${key} : ${type}; \n`;
   }
 }
+// type name = 1 | 2;
+class GenType {
+  isProcess = false;
+  resStr = "";
+  start(name) {
+    this.resStr += `type ${name} = `;
+    this.isProcess = true;
+  }
+  end() {
+    this.resStr = this.resStr.slice(0, -1);
+    this.resStr += `;`;
+    return this.resStr;
+  }
+  reset() {
+    this.resStr = "";
+    this.isProcess = false;
+  }
+  append(type) {
+    this.resStr += ` ${type} |`;
+  }
+}
 
 const isObject = (v) => typeof v === "object";
 const isArray = (v) => Array.isArray(v);
 
 const convertArray = (jsonArr, interfaceName) => {
-  const keys = [
-    ...new Set(jsonArr.reduce((c, v) => c.concat(Object.keys(v)), [])),
-  ]; // every key been used
-  const genInterface = new GenInterface();
-  genInterface.start(interfaceName);
-  keys.forEach((k) => {
-    genInterface.append(k, "any");
-  });
-  const str = genInterface.end();
-  console.log(str);
-  genInterface.reset();
-  return str;
+
+  return "";
 };
 
 const covertObj = (jsonObj, interfaceName) => {
@@ -72,13 +83,17 @@ const covertObj = (jsonObj, interfaceName) => {
   Object.keys(jsonObj).forEach((k) => {
     const value = jsonObj[k];
     if (isArray(value)) {
-      const arrInterfaceKeyArr = `I${k}Arr`;
-      const arrInterfaceKeyItem = `I${k}Item`;
-      genInterface.append(arrInterfaceKeyArr, `${arrInterfaceKeyItem}[]`);
+      const first = value[0];
+      if (isObject(first)) {
+        const arrInterfaceKeyItem = getInterfaceName(k, "objectItem");
+        genInterface.append(k, `${arrInterfaceKeyItem}[]`);
+      } else {
+        genInterface.append(k, `${typeof first}[]`);
+      }
       return;
     }
     if (isObject(value)) {
-      const objInterfaceKey = `I${k}`;
+      const objInterfaceKey = getInterfaceName(k, "objectItem");
       genInterface.append(k, objInterfaceKey);
       return;
     }
@@ -86,28 +101,34 @@ const covertObj = (jsonObj, interfaceName) => {
     genInterface.append(k, type);
   });
   const str = genInterface.end();
-  console.log(str);
   genInterface.reset();
   return str;
 };
 
 const getAllTasks = (jsonObj, topName = "tsModule", tasks = []) => {
   if (!isObject(jsonObj)) {
-    console.error(`covert must accept a obj!!!`);
+    console.error(`请传入对象！！！`);
     return null;
   }
 
   if (isArray(jsonObj)) {
-    tasks.push({ data: jsonObj, type: "array", name: topName });
-    return tasks;
+    console.error(`不支持顶层传数组！！！`);
+    return null;
   }
 
-  tasks.push({ data: jsonObj, type: "object", name: topName });
+  tasks.push({
+    data: jsonObj,
+    type: "object",
+    name: getInterfaceName(topName, "objectItem"),
+  });
 
   Object.keys(jsonObj).forEach((k) => {
     const value = jsonObj[k];
     if (isArray(value)) {
-      tasks.push({ data: value, type: "array", name: `I${k}Item` });
+      const first = value[0];
+      if (isObject(first)) {
+        getAllTasks(first,k,tasks);
+      }
       return;
     }
     if (isObject(value)) {
@@ -117,18 +138,26 @@ const getAllTasks = (jsonObj, topName = "tsModule", tasks = []) => {
   return tasks;
 };
 
-const json2ts = (jsonStr) => {
+const getInterfaceName = (k, type) => {
+  if (type === "objectItem") {
+    return `I${k}`;
+  }
+  return k;
+};
+const json2ts = (jsonStr,interfaceName = 'tsModule') => {
   try {
     const jsonObj = JSON.parse(jsonStr);
     // covert(jsonObj,'tsModule');
-    const tasks = getAllTasks(jsonObj, "ITop");
-    const resultStr = tasks.map(({ data, type, name }) => {
-      if (type === "array") {
-        return convertArray(data, name);
-      } else {
-        return covertObj(data, name);
-      }
-    }).join("\n\n");
+    const tasks = getAllTasks(jsonObj,interfaceName);
+    const resultStr = tasks
+      .map(({ data, type, name }) => {
+        if (type === "array") {
+          return convertArray(data, name);
+        } else {
+          return covertObj(data, name);
+        }
+      })
+      .join("\n\n");
     return resultStr;
   } catch (error) {
     console.log(error);
