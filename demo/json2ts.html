@@ -1,45 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>json2ts</title>
     <script src="../js/json2ts.js"></script>
-    <link rel="stylesheet"
-      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.1.0/build/styles/default.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.1.0/build/highlight.min.js"></script>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body>
-    
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      data-name="vs/editor/editor.main"
+      href="./lib/vs/editor/editor.main.css"
+    />
+  </head>
+  <body>
     <div class="grid grid-cols-2 gap-4">
-        <div class="box-border p-4 h-screen ">
-            <div class="h-full w-full bg-gray-50 rounded">
-                <textarea id="jsonInput" class="resize-none	overflow-auto h-full w-full p-2"></textarea>
-            </div>
+      <div class="box-border p-4 h-screen">
+        <div class="h-full w-full bg-gray-50 rounded">
+          <div id="jsonInput" class="h-full w-full"></div>
         </div>
-        <div class="box-border p-4	h-screen ">
-            <pre  class="overflow-auto h-full w-full bg-gray-50 rounded"><code id="tsOutput" class="h-full language-typescript"></code></pre>
-        </div>
+      </div>
+      <div class="box-border p-4 h-screen">
+        <div id="tsOutput" class="h-full w-full"></div>
+      </div>
     </div>
+    <button
+      id="btn"
+      class="
+        fixed
+        right-4
+        bottom-4
+        py-2
+        px-4
+        bg-green-500
+        text-white
+        font-semibold
+        rounded-lg
+        shadow-md
+        focus:outline-none
+      "
+    >
+      转换
+    </button>
     <script>
-        const jsonInput = document.querySelector('#jsonInput');
-        const tsOutput = document.querySelector('#tsOutput');
+      const jsonInput = document.querySelector("#jsonInput");
+      const tsOutput = document.querySelector("#tsOutput");
+      const btn = document.querySelector("#btn");
 
-        jsonInput.addEventListener('input',(e)=>{
-            console.log(e.target.value);
-
-            const result = json2ts(e.target.value);
-
-            if(result){
-                tsOutput.textContent = result;
-                hljs.highlightAll();
-            }
-
-        });
-
+      btn.addEventListener("click", () => {
+        const json = editor.getValue();
+        const result = json2ts(json);
+        if (result) {
+          editor2.setValue(result);
+        }
+      });
     </script>
+    <script>
+      var require = { paths: { vs: "./lib/vs" } };
+    </script>
+    <script src="./lib/vs/loader.js"></script>
+    <script src="./lib/vs/editor/editor.main.nls.js"></script>
+    <script src="./lib/vs/editor/editor.main.js"></script>
 
-</body>
+    <script>
+      var editor = monaco.editor.create(document.getElementById("jsonInput"), {
+        value: "",
+        language: "json",
+        theme: "vs-dark",
+        scrollbar: {
+          verticalScrollbarSize: 8,
+          horizontalScrollbarSize: 8,
+        },
+      });
+      var editor2 = monaco.editor.create(document.getElementById("tsOutput"), {
+        value: "",
+        readonly: true,
+        language: "typescript",
+        theme: "vs-dark",
+        scrollbar: {
+          verticalScrollbarSize: 8,
+          horizontalScrollbarSize: 8,
+        },
+      });
+    </script>
+  </body>
 </html>
