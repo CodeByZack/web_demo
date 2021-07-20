@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>json2ts</title>
     <script src="../js/json2ts.js"></script>
+    <link rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.1.0/build/styles/default.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.1.0/build/highlight.min.js"></script>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
@@ -17,9 +20,7 @@
             </div>
         </div>
         <div class="box-border p-4	h-screen ">
-            <pre id="tsOutput" class="overflow-auto h-full w-full bg-gray-50 rounded">
-
-            </pre>
+            <pre  class="overflow-auto h-full w-full bg-gray-50 rounded"><code id="tsOutput" class="h-full language-typescript"></code></pre>
         </div>
     </div>
     <script>
@@ -32,12 +33,13 @@
             const result = json2ts(e.target.value);
 
             if(result){
-                tsOutput.innerText = result;
+                tsOutput.textContent = result;
+                hljs.highlightAll();
             }
 
         });
 
-
     </script>
+
 </body>
 </html>
