@@ -52,7 +52,7 @@
 
       btn.addEventListener("click", () => {
         const json = editor.getValue();
-        const result = json2ts(json);
+        const result = json2tstool.default(json);
         if (result) {
           editor2.setValue(result);
         }
